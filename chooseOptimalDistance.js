@@ -8,19 +8,19 @@ const chooseOptimalDistance = (t, k, ls) => {
 
     if (k === 1) {
         for (let i = 0; i < ls.length; i++) {
-            if (i === 0 || i > 0 && closestSum < ls[i] && ls[i] < t) {
+            if (i === 0 || i > 0 && closestSum < ls[i] && ls[i] <= t) {
                 closestSum = ls[i];
             }
         }
     }
 
-    //if more than one city we
+    //if more than one city 
     else {
         //if 2 cities simple loop to get the best sum
         if (k === 2) {
             for (let i = 0; i < ls.length - 1; i++) {
                 let sum = ls[i] + ls[i + 1];
-                if (t > sum) {
+                if (t >= sum) {
                     closestSum = sum;
                 }
             }
@@ -32,7 +32,7 @@ const chooseOptimalDistance = (t, k, ls) => {
                 let right = ls.length - 1;
                 while (left < right) {
                     let sum = ls[i] + ls[left] + ls[right];
-                    if (t > sum) {
+                    if (t >= sum) {
                         closestSum = sum;
                     }
                     if (sum > t) {
@@ -55,3 +55,8 @@ const chooseOptimalDistance = (t, k, ls) => {
 // console.log(chooseOptimalDistance(163, 3, [50])); // null
 // console.log(chooseOptimalDistance(3, 1, [1, 2, 3]));
 // console.log(chooseOptimalDistance(4, 2, [1, 2, 3]));
+// console.log(chooseOptimalDistance(163, 3, [50, 55, 56, 57, 58])); //expected null to equal 163
+
+
+
+
